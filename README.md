@@ -17,6 +17,13 @@ A meme that captures how I currently feel about my university studies is ![](htt
 * John Adams
 + Thomas Jefferson
 
-1. 1. James Madison
+1. James Madison
 2. James Monroe
 3. John Quincy Adams
+
+**This is bold text**
+_This text is italicized_
+https://www.youtube.com/
+
+https://tenor.com/fbIDcGi39cR.gif 
+https://media1.tenor.com/m/OofIPxb5imMAAAAC/lep.gif
