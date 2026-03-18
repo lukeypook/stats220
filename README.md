@@ -26,4 +26,4 @@ _This text is italicized_
 https://www.youtube.com/
 
 https://tenor.com/fbIDcGi39cR.gif 
-https://media1.tenor.com/m/OofIPxb5imMAAAAC/lep.gif
+![](https://media1.tenor.com/m/OofIPxb5imMAAAAC/lep.gif)
