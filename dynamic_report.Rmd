@@ -1,0 +1,86 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+```
+
+```{css}
+
+```
+
+## What's going on with this data?
+
+You need to change the contents of this Rmd! Replace the R code and markdown give below in this template document.
+
+```{r}
+library(tidyverse)
+
+logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQBxdyDyrVLI6rj2PqUlKvn6RkQ3vvoTPhoH9w48pr1eQx6W26kxSYEagDe8cBONxiMRQ329dN1_jUZ/pub?gid=480293547&single=true&output=csv")
+
+latest_data <- logged_data |>
+  rename(
+    platform  = "Which platform did you see the ad on?",
+    category  = "Which category best describes the ad?",
+    duration  = "How long was the ad (in seconds)?",
+    skippable = "Was the ad skippable?",
+    relevance = "How relevant was the ad to you?"
+  )
+
+avg_duration <- round(mean(latest_data$duration), 1)
+avg_relevance <- round(mean(latest_data$relevance), 1)
+total_obs <- nrow(latest_data)
+```
+```{css}
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+h2 {
+  color: #2c5f8a;
+}
+p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+```
+
+## Observing Social Media Ads: What's Targeting Me?
+
+Over the past week, I logged **`r total_obs` social media ad observations** across platforms including TikTok, Instagram, and YouTube. For each ad I recorded the platform, category, duration, whether it was skippable, and how relevant it felt to my interests.
+
+The data shows that the average ad lasted **`r avg_duration` seconds**, and the average relevance score was **`r avg_relevance` out of 5**, suggesting that `r if(avg_relevance >= 3) "ads were generally well-targeted to my interests" else "ads were not particularly relevant to my interests"`.
+```{r}
+print(
+  latest_data |>
+    ggplot(aes(x = platform)) +
+    geom_bar(fill = "steelblue") +
+    labs(
+      title = "Number of Ads Observed per Platform",
+      x = "Platform",
+      y = "Number of Ads"
+    )
+)
+```
+
+The chart above shows which platforms served the most ads during my observation period.
+```{r}
+print(
+  latest_data |>
+    ggplot(aes(x = category)) +
+    geom_bar(fill = "coral") +
+    labs(
+      title = "Types of Ad Categories Observed",
+      x = "Ad Category",
+      y = "Number of Ads"
+    ) +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+)
+```
+
+The chart above breaks down the types of products and services being advertised to me. With an average relevance score of `r avg_relevance`/5 and average ad duration of `r avg_duration` seconds, this data gives a snapshot of how social media platforms are targeting my feed.
+
+```
